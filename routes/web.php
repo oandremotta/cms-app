@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\CadastrarModulo;
+use App\Http\Livewire\GerenciarModulo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +27,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::prefix('modulo')->group(function () {
+        Route::get('/{id}/cadastrar', CadastrarModulo::class)->name('modulo.cadastrar');
+        Route::get('/{id}/gerenciar', GerenciarModulo::class)->name('modulo.gerenciar');
+    });
 });
